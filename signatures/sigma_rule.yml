@@ -1,0 +1,26 @@
+title: Detection of Phishing Campaign VM Telemetry and Messenger Share Schemes
+id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+status: experimental
+description: Detects outbound HTTP requests to known campaign telemetry endpoints and protocol handler triggers for viral propagation.
+author: Security Analyst
+date: 2026/10/30
+references:
+    - Internal Phishing Analysis
+tags:
+    - attack.initial_access
+    - attack.execution
+    - attack.t1566.002
+logsource:
+    category: proxy
+    product: zeek
+detection:
+    selection_uri:
+        uri|contains:
+            - '/m2/log?std='
+    selection_scheme:
+        url|contains:
+            - 'fb-messenger://share'
+    condition: selection_uri or selection_scheme
+falsepositives:
+    - Unknown
+level: high
