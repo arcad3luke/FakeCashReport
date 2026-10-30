@@ -1,0 +1,3 @@
+# Telemetry, Heartbeat, and Exfiltration Paths
+/m2/log
+/cdn-cgi/rum
